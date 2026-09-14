@@ -12,38 +12,39 @@
   </p>
 </div>
 
-## Introduction
+## Project Introduction
 
 An Agent Skill for documenting, examining, and developing laiism with traceable sources.
 
-This project separates philosophical material from personality simulation and everyday style rules.
-It supports explanation, critique, conditional application, and drafts without inventing beliefs or
-turning historical personal positions into doctrine. The project is named `laiism.skill`; `laiism`
-names the philosophy. Both names are always lowercase.
+The project is `laiism.skill`; the philosophy is `laiism`. Both names remain lowercase. The Skill
+keeps philosophical material separate from personality simulation, writing rules, and code style.
 
-## Features
+## Project Features
 
-- 📚 **Traceable material** — Each position carries its source and confirmation status.
-- 🧭 **Separate states** — Personal confirmation and doctrinal ratification remain independent.
-- 🔍 **Open examination** — Arguments, assumptions, counterexamples, and unresolved tensions stay visible.
-- 🧩 **Standalone use** — No personal model, website, or external workflow is required.
+📚 **Traceable Sources** — Each position retains its source and confirmation evidence.
+
+🧭 **Separate States** — Personal confirmation and doctrinal ratification are recorded independently.
+
+🔍 **Critical Examination** — Explain arguments, examine counterexamples, and draft proposed revisions.
+
+🧩 **Standalone Use** — No personal model, website, or external workflow is required.
 
 ## Getting Started
 
-Install once in the shared skills directory. Git refuses to overwrite an existing installation:
+Install the Skill once in the shared skills directory:
 
 ```bash
 mkdir -p ~/.agents/skills
 git clone https://github.com/lailai0916/laiism-skill ~/.agents/skills/laiism-skill
 ```
 
-Read [SKILL.md](SKILL.md), then the relevant records in [positions.json](positions.json).
-For example: “Use laiism-skill to examine the recorded view on AI and skill value; distinguish
-the existing position from your own proposed extensions.”
+Ask the Agent to use `laiism-skill`. It reads [SKILL.md](SKILL.md), then the relevant records in
+[positions.json](positions.json), including their sources and confirmation states. For example:
+"Explain the recorded view on AI and skill value, then propose a counterexample."
 
-If you already maintain a checkout elsewhere, link it into the shared skills directory instead of
-cloning a second copy. A runtime that needs an adapter should reference the shared root, not receive
-a separate copy of each Skill. Update an installation with `git pull --ff-only` inside its directory.
+If a checkout already exists, link it into the shared directory instead of making another copy.
+Runtime adapters reference the shared root. Run `git pull --ff-only` in the installation directory
+to update. See the [maintenance method](references/method.md) before changing position content or status.
 
 ## Project Structure
 
@@ -52,42 +53,40 @@ laiism-skill/
 ├── references/                     # Interpretation and maintenance method
 ├── scripts/                        # Repository and evidence-state checks
 ├── tests/                          # Regression tests and behavior scenarios
+├── package.json                    # Text formatting commands and dependencies
 ├── positions.json                  # Canonical positions, evidence, and states
+├── pyproject.toml                  # Python formatting and lint configuration
 ├── repository.json                 # Project identity and publication state
+├── requirements-dev.txt            # Pinned Python development dependencies
 └── SKILL.md                        # Skill entry point
 ```
 
 ## Validation
 
+Maintenance checks use Python 3.10+ and Node.js 22. Run from the repository root:
+
 ```bash
+python3 -m venv .venv
+source .venv/bin/activate
+python3 -m pip install -r requirements-dev.txt
+npm ci --ignore-scripts
 python3 scripts/check_repository.py
 python3 -m unittest discover -s tests -v
-npm ci --ignore-scripts
+python3 -m ruff check .
+python3 -m ruff format --check .
 npm run format:check
 ```
 
-Local checks validate position data, project identity, links, and required evidence fields. They cannot establish that
-a statement is true or that approval actually occurred. Review [behavior scenarios](tests/scenarios.md)
-separately when changing interpretation.
+Prettier formats supported text files; Ruff formats and checks Python. Local validation checks data,
+identity, links, and evidence fields, not the truth of a position or whether approval occurred.
+Review [behavior scenarios](tests/scenarios.md) when changing interpretation.
 
-Repository and README checks use a fixed revision of
-[lailai-template](https://github.com/lailai0916/lailai-template/blob/main/SETUP.md) in CI.
-Run that checkout's `scripts/check_repository.py --root /path/to/laiism-skill --display-name laiism.skill`
-for the same validation locally; this repository does not maintain a second set of those rules.
-
-## Sources
-
-Imported material preserves its original attribution and historical confirmation status. Each record
-links to an immutable source version; model summaries are not presented as verbatim user quotations.
-Migration itself does not ratify doctrine. See the [maintenance method](references/method.md).
-
-[repository.json](repository.json) records the canonical GitHub identity, description, and topics.
-Keep these values aligned with the repository's About settings when changing project metadata.
+CI also uses a fixed revision of [lailai-template](https://github.com/lailai0916/lailai-template/blob/main/SETUP.md)
+for repository and README checks. Run its checker against this checkout with
+`--root /path/to/laiism-skill --display-name laiism.skill`; add `--github` to verify live metadata.
 
 ## License
 
 This project's code is licensed under [MIT License](https://github.com/lailai0916/tools/blob/main/LICENSE).
 
-Skill text and position material retain [CC BY 4.0](LICENSE-docs), including attribution to the sources
-listed in each imported record. Code scaffolding is adapted from
-[lailai-template](https://github.com/lailai0916/lailai-template).
+Skill text and position material are licensed under [CC BY 4.0](LICENSE-docs).

@@ -2,6 +2,7 @@
   "slug": "lailai0916/laiism-skill",
   "display_name": "laiism.skill",
   "description": "An Agent Skill for documenting, examining, and developing laiism with traceable sources.",
+  "homepage": "https://lailai.one/docs/project/personal/laiism-skill",
   "topics": ["agent-skill", "philosophy", "worldview", "knowledge-management", "markdown"],
   "published": true
 }

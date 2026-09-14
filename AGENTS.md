@@ -11,8 +11,8 @@ Read `SKILL.md` and `references/method.md` before changing content.
 - Do not copy personality profiles, writing rules, code conventions, or unrelated workflows here.
 - Use runtime-neutral instructions. `CLAUDE.md` is only an import of this file.
 - Shared installation belongs under `~/.agents/skills/`; do not create per-runtime skill copies.
-- `repository.json` records canonical project identity and publication state. Keep its description
-  and topics aligned with the GitHub About settings. Publication does not ratify any doctrine.
+- `repository.json` records canonical project identity and publication state. Keep its description,
+  homepage, and topics aligned with GitHub About. Publication does not ratify any doctrine.
 - Keep both READMEs aligned, including their shared installation commands and real repository badges.
   Publishing changes remains a separate authorized action; only report CI results actually observed.
 - Repository standards and generic validation come from
@@ -22,12 +22,20 @@ Read `SKILL.md` and `references/method.md` before changing content.
 
 ## Validation
 
+Use Python 3.10+ and Node.js 22. Install development dependencies in a virtual environment:
+
 ```bash
+python3 -m pip install -r requirements-dev.txt
+npm ci --ignore-scripts
 python3 scripts/check_repository.py
 python3 -m unittest discover -s tests -v
-npm ci --ignore-scripts
+python3 -m ruff check .
+python3 -m ruff format --check .
 npm run format:check
 ```
+
+Prettier owns supported text formats; Ruff owns Python formatting and static checks.
+Use `npm run format` and `python3 -m ruff format .` to apply their formatting.
 
 Run the behavioral scenarios in `tests/scenarios.md` when changing interpretation or routing.
 Automated checks do not establish the truth of a doctrine or verify consent.

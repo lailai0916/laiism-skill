@@ -33,5 +33,7 @@ Thumbs.db
 .claude/settings.local.json
 
 # Python validation artifacts
+.venv/
+.ruff_cache/
 __pycache__/
-*.pyc
+*.py[cod]

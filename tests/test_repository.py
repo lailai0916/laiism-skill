@@ -5,7 +5,6 @@ import tempfile
 import unittest
 from pathlib import Path
 
-
 ROOT = Path(__file__).resolve().parents[1]
 SPEC = importlib.util.spec_from_file_location("checker", ROOT / "scripts/check_repository.py")
 checker = importlib.util.module_from_spec(SPEC)
@@ -64,7 +63,12 @@ class RepositoryTest(unittest.TestCase):
         self.assertTrue(checker.check_positions(self.data))
 
     def test_bad_status_and_source(self):
-        for field, value in (("personal_status", "maybe"), ("personal_status", []), ("doctrine_status", "maybe"), ("source", None)):
+        for field, value in (
+            ("personal_status", "maybe"),
+            ("personal_status", []),
+            ("doctrine_status", "maybe"),
+            ("source", None),
+        ):
             with self.subTest(field=field):
                 data = copy.deepcopy(self.data)
                 data["positions"][0][field] = value
@@ -74,7 +78,11 @@ class RepositoryTest(unittest.TestCase):
         for name in ("laiism", "laiism.skill", "laiism-skill"):
             with self.subTest(name=name):
                 self.assertEqual(checker.check_text("note.txt", name + "\n"), [])
-                for spelling in (name.capitalize(), name.upper(), name.replace("skill", "skill".capitalize())):
+                for spelling in (
+                    name.capitalize(),
+                    name.upper(),
+                    name.replace("skill", "skill".capitalize()),
+                ):
                     if spelling != name:
                         self.assertTrue(checker.check_text("note.txt", spelling + "\n"))
                         self.assertTrue(checker.check_text(spelling + ".txt", "content\n"))
@@ -98,8 +106,14 @@ class RepositoryTest(unittest.TestCase):
             other = Path(directory) / "README.md"
             for name in ("laiism", "laiism-skill", "other"):
                 with self.subTest(name=name):
-                    other.write_text(path.read_text(encoding="utf-8").replace("<h1>laiism.skill</h1>", f"<h1>{name}</h1>"), encoding="utf-8")
+                    other.write_text(
+                        path.read_text(encoding="utf-8").replace(
+                            "<h1>laiism.skill</h1>", f"<h1>{name}</h1>"
+                        ),
+                        encoding="utf-8",
+                    )
                     self.assertTrue(checker.check_readme_identity(other, True))
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -6,14 +6,12 @@ import os
 import re
 import subprocess
 from pathlib import Path
-from typing import Optional
-
 
 ROOT = Path(__file__).resolve().parents[1]
 IDENTITY = ROOT / "repository.json"
 
 
-def repository_slug() -> Optional[str]:
+def repository_slug() -> str | None:
     slug = os.environ.get("GITHUB_REPOSITORY") or os.environ.get("REPOSITORY_SLUG")
     if slug:
         return slug.removesuffix(".git").strip("/")
@@ -128,7 +126,9 @@ def check_positions(data) -> list[str]:
             errors.append(f"{prefix}: invalid personal status")
         if item.get("doctrine_status") not in ("ratified", "unratified"):
             errors.append(f"{prefix}: invalid doctrine status")
-        if item.get("personal_status") == "confirmed" and not evidence_valid(item.get("confirmation")):
+        if item.get("personal_status") == "confirmed" and not evidence_valid(
+            item.get("confirmation")
+        ):
             errors.append(f"{prefix}: confirmed position lacks confirmation evidence")
         if item.get("doctrine_status") == "ratified":
             evidence = item.get("ratification")
@@ -137,7 +137,9 @@ def check_positions(data) -> list[str]:
             if not evidence_valid(evidence):
                 errors.append(f"{prefix}: doctrine lacks separate ratification evidence")
             elif evidence.get("approved_by") != "lailai" or evidence.get("scope") != "doctrine":
-                errors.append(f"{prefix}: ratification must identify the approver and doctrine scope")
+                errors.append(
+                    f"{prefix}: ratification must identify the approver and doctrine scope"
+                )
             elif evidence == item.get("confirmation"):
                 errors.append(f"{prefix}: personal confirmation cannot double as ratification")
             elif evidence.get("content_sha256") != content_digest(item):
@@ -147,7 +149,10 @@ def check_positions(data) -> list[str]:
 
 def check_text(rel: str, content: str) -> list[str]:
     errors = []
-    if any(match.group() != match.group().lower() for match in re.finditer(r"laiism(?:[.-]skill)?", rel + "\n" + content, re.IGNORECASE)):
+    if any(
+        match.group() != match.group().lower()
+        for match in re.finditer(r"laiism(?:[.-]skill)?", rel + "\n" + content, re.IGNORECASE)
+    ):
         errors.append(f"{rel}: brand must remain lowercase")
     if rel == "SKILL.md" and not re.search(r"^# laiism\.skill$", content, re.MULTILINE):
         errors.append(f"{rel}: expected the laiism.skill project title")
@@ -200,7 +205,9 @@ def main() -> int:
     if detected_slug is not None and detected_slug != slug:
         errors.append("repository: runtime or remote identity disagrees with metadata")
     if published and not detected_slug:
-        errors.append("repository: published state requires a real configured origin or CI identity")
+        errors.append(
+            "repository: published state requires a real configured origin or CI identity"
+        )
     errors.extend(check_readme_identity(ROOT / "README.md", published))
     errors.extend(check_readme_identity(ROOT / "README.zh-Hans.md", published))
     errors.extend(check_positions(data))
