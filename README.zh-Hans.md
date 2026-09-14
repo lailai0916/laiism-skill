@@ -42,12 +42,12 @@ git clone https://github.com/lailai0916/laiism-skill ~/.agents/skills/laiism-ski
 
 ```bash
 laiism-skill/
-├── references/                 # 思想解释与维护方法
-├── scripts/                    # 仓库与证据状态校验
-├── tests/                      # 回归测试与行为场景
-├── positions.json              # 思想正文、依据与状态的唯一来源
-├── repository.json             # 项目身份与发布状态
-└── SKILL.md                    # Skill 入口
+├── references/                     # 思想解释与维护方法
+├── scripts/                        # 仓库与证据状态校验
+├── tests/                          # 回归测试与行为场景
+├── positions.json                  # 思想正文、依据与状态的唯一来源
+├── repository.json                 # 项目身份与发布状态
+└── SKILL.md                        # Skill 入口
 ```
 
 ## 验证

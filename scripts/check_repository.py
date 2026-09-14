@@ -11,6 +11,7 @@ from typing import Optional
 
 ROOT = Path(__file__).resolve().parents[1]
 IDENTITY = ROOT / "repository.json"
+TREE_COMMENT_MIN_INDEX = 36
 
 
 def repository_slug() -> Optional[str]:
@@ -72,9 +73,17 @@ def check_readme(path: Path, slug: str, chinese: bool, published: bool) -> list[
     if not match:
         errors.append(f"{path.name}: missing bash structure tree")
         return errors
-    for line in match.group(1).splitlines():
-        if "#" in line and line.index("#") != 32:
-            errors.append(f"{path.name}: structure comment is not at index 32: {line}")
+    tree_lines = [line for line in match.group(1).splitlines() if "#" in line]
+    if tree_lines:
+        comment_index = max(
+            max(len(line.split("#", 1)[0].rstrip()) for line in tree_lines) + 1,
+            TREE_COMMENT_MIN_INDEX,
+        )
+        for line in tree_lines:
+            if line.index("#") != comment_index:
+                errors.append(
+                    f"{path.name}: structure comment is not at index {comment_index}: {line}"
+                )
     return errors
 
 

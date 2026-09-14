@@ -48,12 +48,12 @@ a separate copy of each Skill. Update an installation with `git pull --ff-only` 
 
 ```bash
 laiism-skill/
-├── references/                 # Interpretation and maintenance method
-├── scripts/                    # Repository and evidence-state checks
-├── tests/                      # Regression tests and behavior scenarios
-├── positions.json              # Canonical positions, evidence, and states
-├── repository.json             # Project identity and publication state
-└── SKILL.md                    # Skill entry point
+├── references/                     # Interpretation and maintenance method
+├── scripts/                        # Repository and evidence-state checks
+├── tests/                          # Regression tests and behavior scenarios
+├── positions.json                  # Canonical positions, evidence, and states
+├── repository.json                 # Project identity and publication state
+└── SKILL.md                        # Skill entry point
 ```
 
 ## Validation

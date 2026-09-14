@@ -90,6 +90,13 @@ class RepositoryTest(unittest.TestCase):
             other.write_text(path.read_text(encoding="utf-8").replace("<h1>laiism</h1>", "<h1>other</h1>"), encoding="utf-8")
             self.assertTrue(checker.check_readme(other, "lailai0916/laiism-skill", False, True))
 
+    def test_project_tree_comment_alignment(self):
+        for name in ("README.md", "README.zh-Hans.md"):
+            path = ROOT / name
+            for line in path.read_text(encoding="utf-8").splitlines():
+                if line.startswith(("├", "└")) and "#" in line:
+                    self.assertEqual(line.index("#"), checker.TREE_COMMENT_MIN_INDEX)
+
 
 if __name__ == "__main__":
     unittest.main()
