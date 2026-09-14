@@ -31,7 +31,7 @@ jobs:
           python-version: '3.13'
 
       - name: Validate shared repository standards
-        run: python3 ../repository-standards/scripts/check_repository.py --root . --display-name laiism
+        run: python3 ../repository-standards/scripts/check_repository.py --root . --display-name laiism.skill
       - name: Validate positions and project identity
         run: python3 scripts/check_repository.py
       - name: Test validation gates

@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>laiism</h1>
+  <h1>laiism.skill</h1>
   <p><a href="README.md">English</a> · <strong>简体中文</strong></p>
   <p>
     <img src="https://img.shields.io/github/actions/workflow/status/lailai0916/laiism-skill/ci.yml?branch=main&style=flat-square" alt="持续集成" />
@@ -16,7 +16,7 @@
 
 用于整理、讨论与发展 laiism 的 Agent Skill，每项思想材料均保留可追溯来源。
 
-本项目将思想材料与人格模拟、日常风格规范分开维护。它支持解释、批评、条件性应用与拟稿，不编造信仰，也不把历史个人立场自动提升为教义。名称 `laiism` 始终小写。
+本项目将思想材料与人格模拟、日常风格规范分开维护。它支持解释、批评、条件性应用与拟稿，不编造信仰，也不把历史个人立场自动提升为教义。项目名为 `laiism.skill`，思想体系名为 `laiism`，两者始终小写。
 
 ## 特性
 
@@ -62,7 +62,7 @@ npm run format:check
 本地脚本检查思想数据、项目身份、链接与必要的证据字段，不能证明观点为真，也不能证明批准实际发生。改变解释方式时，另行核对 [行为场景](tests/scenarios.md)。
 
 仓库与 README 校验由 CI 引用固定版本的 [lailai-template](https://github.com/lailai0916/lailai-template/blob/main/SETUP.md)。
-本地可运行该模板工作副本中的 `scripts/check_repository.py --root /path/to/laiism-skill --display-name laiism`，
+本地可运行该模板工作副本中的 `scripts/check_repository.py --root /path/to/laiism-skill --display-name laiism.skill`，
 本仓库不维护第二套通用规则。
 
 ## 来源

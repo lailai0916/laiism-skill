@@ -34,8 +34,8 @@ def check_readme_identity(path: Path, published: bool) -> list[str]:
     """Check only this project's brand and publication state."""
     text = path.read_text(encoding="utf-8")
     errors = []
-    if "<h1>laiism</h1>" not in text:
-        errors.append(f"{path.name}: expected the established laiism display name")
+    if "<h1>laiism.skill</h1>" not in text:
+        errors.append(f"{path.name}: expected the laiism.skill project display name")
     if published:
         if "status-local_draft" in text:
             errors.append(f"{path.name}: published repository still marked as local")
@@ -147,8 +147,10 @@ def check_positions(data) -> list[str]:
 
 def check_text(rel: str, content: str) -> list[str]:
     errors = []
-    if any(match.group() != "laiism" for match in re.finditer("laiism", rel + "\n" + content, re.IGNORECASE)):
+    if any(match.group() != match.group().lower() for match in re.finditer(r"laiism(?:[.-]skill)?", rel + "\n" + content, re.IGNORECASE)):
         errors.append(f"{rel}: brand must remain lowercase")
+    if rel == "SKILL.md" and not re.search(r"^# laiism\.skill$", content, re.MULTILINE):
+        errors.append(f"{rel}: expected the laiism.skill project title")
     if "\r" in content or not content.endswith("\n"):
         errors.append(f"{rel}: use LF and a final newline")
     if rel.endswith(".md"):
@@ -189,7 +191,7 @@ def main() -> int:
         print("ERROR repository metadata must be an object")
         return 1
     slug = identity.get("slug")
-    if slug != "lailai0916/laiism-skill" or identity.get("display_name") != "laiism":
+    if slug != "lailai0916/laiism-skill" or identity.get("display_name") != "laiism.skill":
         errors.append("repository: unexpected project identity")
     published = identity.get("published")
     if type(published) is not bool:

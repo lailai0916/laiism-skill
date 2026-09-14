@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>laiism</h1>
+  <h1>laiism.skill</h1>
   <p><strong>English</strong> · <a href="README.zh-Hans.md">简体中文</a></p>
   <p>
     <img src="https://img.shields.io/github/actions/workflow/status/lailai0916/laiism-skill/ci.yml?branch=main&style=flat-square" alt="CI" />
@@ -18,7 +18,8 @@ An Agent Skill for documenting, examining, and developing laiism with traceable 
 
 This project separates philosophical material from personality simulation and everyday style rules.
 It supports explanation, critique, conditional application, and drafts without inventing beliefs or
-turning historical personal positions into doctrine. The name `laiism` is always lowercase.
+turning historical personal positions into doctrine. The project is named `laiism.skill`; `laiism`
+names the philosophy. Both names are always lowercase.
 
 ## Features
 
@@ -71,7 +72,7 @@ separately when changing interpretation.
 
 Repository and README checks use a fixed revision of
 [lailai-template](https://github.com/lailai0916/lailai-template/blob/main/SETUP.md) in CI.
-Run that checkout's `scripts/check_repository.py --root /path/to/laiism-skill --display-name laiism`
+Run that checkout's `scripts/check_repository.py --root /path/to/laiism-skill --display-name laiism.skill`
 for the same validation locally; this repository does not maintain a second set of those rules.
 
 ## Sources

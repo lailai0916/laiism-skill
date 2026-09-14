@@ -71,10 +71,19 @@ class RepositoryTest(unittest.TestCase):
                 self.assertTrue(checker.check_positions(data))
 
     def test_brand_case(self):
-        self.assertEqual(checker.check_text("note.txt", "laiism\n"), [])
-        for spelling in ("laiism".capitalize(), "laiism".upper()):
-            self.assertTrue(checker.check_text("note.txt", spelling + "\n"))
-            self.assertTrue(checker.check_text(spelling + ".txt", "content\n"))
+        for name in ("laiism", "laiism.skill", "laiism-skill"):
+            with self.subTest(name=name):
+                self.assertEqual(checker.check_text("note.txt", name + "\n"), [])
+                for spelling in (name.capitalize(), name.upper(), name.replace("skill", "skill".capitalize())):
+                    if spelling != name:
+                        self.assertTrue(checker.check_text("note.txt", spelling + "\n"))
+                        self.assertTrue(checker.check_text(spelling + ".txt", "content\n"))
+
+    def test_skill_project_name(self):
+        self.assertEqual(checker.check_text("SKILL.md", "# laiism.skill\n"), [])
+        for name in ("laiism", "laiism-skill"):
+            with self.subTest(name=name):
+                self.assertTrue(checker.check_text("SKILL.md", f"# {name}\n"))
 
     def test_links_and_newline(self):
         self.assertTrue(checker.check_text("README.md", "[missing](does-not-exist.md)\n"))
@@ -87,8 +96,10 @@ class RepositoryTest(unittest.TestCase):
         self.assertTrue(checker.check_readme_identity(path, False))
         with tempfile.TemporaryDirectory() as directory:
             other = Path(directory) / "README.md"
-            other.write_text(path.read_text(encoding="utf-8").replace("<h1>laiism</h1>", "<h1>other</h1>"), encoding="utf-8")
-            self.assertTrue(checker.check_readme_identity(other, True))
+            for name in ("laiism", "laiism-skill", "other"):
+                with self.subTest(name=name):
+                    other.write_text(path.read_text(encoding="utf-8").replace("<h1>laiism.skill</h1>", f"<h1>{name}</h1>"), encoding="utf-8")
+                    self.assertTrue(checker.check_readme_identity(other, True))
 
 if __name__ == "__main__":
     unittest.main()
