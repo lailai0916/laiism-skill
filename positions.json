@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "positions": [
+    {
+      "id": "ai-and-skills",
+      "title": "AI 与技能价值",
+      "personal_status": "confirmed",
+      "doctrine_status": "unratified",
+      "content": "任何事第一反应是怎么用 AI 做。认为可被 AI 替代的存量技能会贬值，真正升值的是认知、审美、判断与经验，不把\"手写\"本身当价值。与\"AI 生成须人工审核\"并存——用得狠，但不放弃把关。",
+      "source": {
+        "url": "https://github.com/lailai0916/lailai-skill/blob/d5518e0d32f746e3eae86380a836b29151ba6462/profile/personality.md",
+        "locator": "核心特征：AI 优先",
+        "kind": "model-summary"
+      },
+      "confirmation": {
+        "url": "https://github.com/lailai0916/lailai-skill/blob/d5518e0d32f746e3eae86380a836b29151ba6462/evolution/evolution-log.md",
+        "locator": "2026-06-08 · v0.7.1 · 确认沉淀 4 条价值 / 规则项"
+      }
+    },
+    {
+      "id": "rules-and-risk",
+      "title": "规则与风险",
+      "personal_status": "confirmed",
+      "doctrine_status": "unratified",
+      "content": "把规则 / 法律当成评估风险的对象，而非道德红线——约束先问\"凭什么必须\"\"违了最多怎样\"，能绕则绕。但这与较真合规并存（CC 协议、素材授权、个税、AI 署名同样寸土必争）：不是没底线，是底线按字面法理自己重算，不靠道德直觉。",
+      "source": {
+        "url": "https://github.com/lailai0916/lailai-skill/blob/d5518e0d32f746e3eae86380a836b29151ba6462/profile/personality.md",
+        "locator": "核心特征：规则即风险、边界自己界定",
+        "kind": "model-summary"
+      },
+      "confirmation": {
+        "url": "https://github.com/lailai0916/lailai-skill/blob/d5518e0d32f746e3eae86380a836b29151ba6462/evolution/evolution-log.md",
+        "locator": "2026-06-08 · v0.8.1 · 确认沉淀 2 条敏感价值画像"
+      }
+    },
+    {
+      "id": "interests-and-ethics",
+      "title": "利益与道德判断",
+      "personal_status": "confirmed",
+      "doctrine_status": "unratified",
+      "content": "判断一件事先算利益与 ROI，而非诉诸道德直觉或集体情感——评技能看\"以后有没有用、会不会被 AI 取代\"，对集体符号持冷峻的个人主义，爱用极端伦理两难自检立场。",
+      "source": {
+        "url": "https://github.com/lailai0916/lailai-skill/blob/d5518e0d32f746e3eae86380a836b29151ba6462/profile/personality.md",
+        "locator": "核心特征：先算账、再谈对错",
+        "kind": "model-summary"
+      },
+      "confirmation": {
+        "url": "https://github.com/lailai0916/lailai-skill/blob/d5518e0d32f746e3eae86380a836b29151ba6462/evolution/evolution-log.md",
+        "locator": "2026-06-08 · v0.8.1 · 确认沉淀 2 条敏感价值画像"
+      }
+    },
+    {
+      "id": "determinism",
+      "title": "决定论世界观",
+      "personal_status": "unconfirmed",
+      "doctrine_status": "unratified",
+      "content": "旧观察表将拉普拉斯妖、光锥及签名\"光锥之内皆是命运\"列为决定论世界观的候选信号。进化日志明确记录本人没有选择确认这一项，不能据此认定其信仰决定论。",
+      "source": {
+        "url": "https://github.com/lailai0916/lailai-skill/blob/d5518e0d32f746e3eae86380a836b29151ba6462/observations.md",
+        "locator": "待确认：价值观 / 取向中的决定论世界观",
+        "kind": "model-summary"
+      },
+      "status_basis": {
+        "url": "https://github.com/lailai0916/lailai-skill/blob/d5518e0d32f746e3eae86380a836b29151ba6462/evolution/evolution-log.md",
+        "locator": "2026-06-08 · v0.7.1：决定论世界观未选，不沉淀"
+      }
+    }
+  ]
+}
