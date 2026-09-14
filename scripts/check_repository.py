@@ -11,7 +11,6 @@ from typing import Optional
 
 ROOT = Path(__file__).resolve().parents[1]
 IDENTITY = ROOT / "repository.json"
-TREE_COMMENT_MIN_INDEX = 36
 
 
 def repository_slug() -> Optional[str]:
@@ -31,59 +30,19 @@ def repository_slug() -> Optional[str]:
     return match.group(1) if match else None
 
 
-def check_readme(path: Path, slug: str, chinese: bool, published: bool) -> list[str]:
-    errors = []
+def check_readme_identity(path: Path, published: bool) -> list[str]:
+    """Check only this project's brand and publication state."""
     text = path.read_text(encoding="utf-8")
-    language_nav = (
-        '<p><a href="README.md">English</a> · <strong>简体中文</strong></p>'
-        if chinese
-        else '<p><strong>English</strong> · <a href="README.zh-Hans.md">简体中文</a></p>'
-    )
-    required = (
-        '<div align="center">',
-        '<h1>laiism</h1>',
-        language_nav,
-    )
-    remote_badges = (
-        f"github/actions/workflow/status/{slug}/ci.yml?branch=main",
-        f"github/last-commit/{slug}",
-        f"github/languages/top/{slug}",
-        f"github/repo-size/{slug}",
-        f"github/license/{slug}",
-    )
+    errors = []
+    if "<h1>laiism</h1>" not in text:
+        errors.append(f"{path.name}: expected the established laiism display name")
     if published:
-        required += remote_badges
         if "status-local_draft" in text:
             errors.append(f"{path.name}: published repository still marked as local")
-    else:
-        required += ("status-local_draft", "repository.json")
-        for marker in remote_badges:
-            if marker in text:
-                errors.append(f"{path.name}: remote badge before publication: {marker}")
-    for marker in required:
-        if marker not in text:
-            errors.append(f"{path.name}: missing {marker}")
-
-    heading = "## 项目结构" if chinese else "## Project Structure"
-    if heading not in text:
-        errors.append(f"{path.name}: missing {heading}")
-        return errors
-    section = text.split(heading, 1)[1]
-    match = re.search(r"```bash\n(.*?)\n```", section, re.DOTALL)
-    if not match:
-        errors.append(f"{path.name}: missing bash structure tree")
-        return errors
-    tree_lines = [line for line in match.group(1).splitlines() if "#" in line]
-    if tree_lines:
-        comment_index = max(
-            max(len(line.split("#", 1)[0].rstrip()) for line in tree_lines) + 1,
-            TREE_COMMENT_MIN_INDEX,
-        )
-        for line in tree_lines:
-            if line.index("#") != comment_index:
-                errors.append(
-                    f"{path.name}: structure comment is not at index {comment_index}: {line}"
-                )
+    elif "status-local_draft" not in text or "repository.json" not in text:
+        errors.append(f"{path.name}: unpublished repository must identify its local state")
+    if not published and "img.shields.io/github/" in text:
+        errors.append(f"{path.name}: remote badge before publication")
     return errors
 
 
@@ -205,10 +164,6 @@ def check_text(rel: str, content: str) -> list[str]:
 def main() -> int:
     errors = []
     required_files = (
-        ".github/workflows/ci.yml",
-        "AGENTS.md",
-        "CLAUDE.md",
-        "LICENSE",
         "README.md",
         "README.zh-Hans.md",
         "scripts/check_repository.py",
@@ -224,9 +179,6 @@ def main() -> int:
     if errors:
         print("\n".join(f"ERROR {error}" for error in errors))
         return 1
-    if (ROOT / "CLAUDE.md").read_text(encoding="utf-8").strip() != "@AGENTS.md":
-        errors.append("CLAUDE.md must contain only @AGENTS.md")
-
     try:
         identity = json.loads(IDENTITY.read_text(encoding="utf-8"))
         data = json.loads((ROOT / "positions.json").read_text(encoding="utf-8"))
@@ -247,36 +199,19 @@ def main() -> int:
         errors.append("repository: runtime or remote identity disagrees with metadata")
     if published and not detected_slug:
         errors.append("repository: published state requires a real configured origin or CI identity")
-    topics = identity.get("topics")
-    if not isinstance(topics, list) or not 3 <= len(topics) <= 8 or any(
-        not isinstance(topic, str) or not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", topic)
-        for topic in topics
-    ):
-        errors.append("repository: expected 3–8 lowercase kebab-case topics")
-    if not isinstance(identity.get("description"), str) or not identity["description"].strip():
-        errors.append("repository: description is required")
-    errors.extend(check_readme(ROOT / "README.md", slug, False, published))
-    errors.extend(check_readme(ROOT / "README.zh-Hans.md", slug, True, published))
+    errors.extend(check_readme_identity(ROOT / "README.md", published))
+    errors.extend(check_readme_identity(ROOT / "README.zh-Hans.md", published))
     errors.extend(check_positions(data))
 
-    forbidden = (
-        "Co-" + "Authored-By",
-        "Generated " + "with",
-        "Generated " + "by",
-        "AI-" + "generated",
-    )
     for rel, text in tracked_text():
         errors.extend(check_text(rel, text))
-        for marker in forbidden:
-            if marker.lower() in text.lower():
-                errors.append(f"{rel}: forbidden attribution: {marker}")
 
     if errors:
         for error in errors:
             print(f"ERROR {error}")
         return 1
 
-    print(f"Repository and position checks passed for {slug} (published={published}).")
+    print(f"Position and project-specific checks passed for {slug} (published={published}).")
     return 0
 
 

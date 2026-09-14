@@ -59,7 +59,11 @@ npm ci --ignore-scripts
 npm run format:check
 ```
 
-脚本检查结构、命名、链接与必要的证据字段，不能证明观点为真，也不能证明批准实际发生。改变解释方式时，另行核对 [行为场景](tests/scenarios.md)。
+本地脚本检查思想数据、项目身份、链接与必要的证据字段，不能证明观点为真，也不能证明批准实际发生。改变解释方式时，另行核对 [行为场景](tests/scenarios.md)。
+
+仓库与 README 校验由 CI 引用固定版本的 [lailai-template](https://github.com/lailai0916/lailai-template/blob/main/SETUP.md)。
+本地可运行该模板工作副本中的 `scripts/check_repository.py --root /path/to/laiism-skill --display-name laiism`，
+本仓库不维护第二套通用规则。
 
 ## 来源
 

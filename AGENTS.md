@@ -14,6 +14,10 @@ headings and sentence starts. Read `SKILL.md` and `references/method.md` before 
   and topics aligned with the GitHub About settings. Publication does not ratify any doctrine.
 - Keep both READMEs aligned, including their shared installation commands and real repository badges.
   Publishing changes remains a separate authorized action; only report CI results actually observed.
+- Repository standards and generic validation come from
+  [lailai-template](https://github.com/lailai0916/lailai-template/blob/main/SETUP.md).
+  The local checker validates position evidence, the lowercase brand, links, and publication state.
+  Keep generic README, tree, and metadata rules in the template; CI uses a fixed template revision.
 
 ## Validation
 

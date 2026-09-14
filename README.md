@@ -65,9 +65,14 @@ npm ci --ignore-scripts
 npm run format:check
 ```
 
-Checks validate structure, naming, links, and required evidence fields. They cannot establish that
+Local checks validate position data, project identity, links, and required evidence fields. They cannot establish that
 a statement is true or that approval actually occurred. Review [behavior scenarios](tests/scenarios.md)
 separately when changing interpretation.
+
+Repository and README checks use a fixed revision of
+[lailai-template](https://github.com/lailai0916/lailai-template/blob/main/SETUP.md) in CI.
+Run that checkout's `scripts/check_repository.py --root /path/to/laiism-skill --display-name laiism`
+for the same validation locally; this repository does not maintain a second set of those rules.
 
 ## Sources
 
