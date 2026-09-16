@@ -16,8 +16,6 @@
 
 用于整理、讨论与发展 laiism 的 Agent Skill，每项思想材料均保留可追溯来源。
 
-项目名为 `laiism.skill`，思想体系名为 `laiism`，两者始终小写。思想材料与人格模拟、写作规范、代码风格分开维护。
-
 ## 项目特性
 
 📚 **来源可溯** — 每项立场保留来源与确认依据。
@@ -26,7 +24,7 @@
 
 🔍 **论证检验** — 解释论证、检验反例，并起草修订建议。
 
-🧩 **独立使用** — 不依赖个人模型、个人网站或外部工作流。
+🧩 **本地安装** — 克隆仓库后，即可作为 Agent Skill 加载。
 
 ## 快速开始
 
@@ -37,9 +35,9 @@ mkdir -p ~/.agents/skills
 git clone https://github.com/lailai0916/laiism-skill ~/.agents/skills/laiism-skill
 ```
 
-让 Agent 使用 `laiism-skill`。它先读 [SKILL.md](SKILL.md)，再读取 [positions.json](positions.json) 中相关条目的正文、来源与确认状态。例如：「解释已记录的 AI 与技能价值立场，再提出一个反例。」
+让 Agent 使用 `laiism-skill`。例如：「解释已记录的 AI 与技能价值立场，再提出一个反例。」
 
-若已有工作副本，将其链接到共享目录，不再复制。Runtime 兼容入口引用共享根目录。在安装目录内运行 `git pull --ff-only` 更新；修改思想正文或状态前，先读 [维护方法](references/method.md)。
+在安装目录内运行 `git pull --ff-only` 更新。
 
 ## 项目结构
 
@@ -72,7 +70,7 @@ python3 -m ruff format --check .
 npm run format:check
 ```
 
-Prettier 负责支持的文本格式，Ruff 负责 Python 格式与静态检查。本地校验检查数据、身份、链接和证据字段，不判断观点真伪或批准是否真实发生。改变解释方式时，另行核对 [行为场景](tests/scenarios.md)。
+Prettier 负责支持的文本格式，Ruff 负责 Python 格式与静态检查。测试覆盖思想数据、证据字段与项目身份，讨论示例见 [行为场景](tests/scenarios.md)。
 
 CI 另行引用固定版本的 [lailai-template](https://github.com/lailai0916/lailai-template/blob/main/SETUP.md) 校验仓库与 README。运行模板检查器时，以 `--root /path/to/laiism-skill --display-name laiism.skill` 指向本仓库，添加 `--github` 可核对线上元数据。
 

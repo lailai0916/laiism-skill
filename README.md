@@ -16,9 +16,6 @@
 
 An Agent Skill for documenting, examining, and developing laiism with traceable sources.
 
-The project is `laiism.skill`; the philosophy is `laiism`. Both names remain lowercase. The Skill
-keeps philosophical material separate from personality simulation, writing rules, and code style.
-
 ## Project Features
 
 📚 **Traceable Sources** — Each position retains its source and confirmation evidence.
@@ -27,7 +24,7 @@ keeps philosophical material separate from personality simulation, writing rules
 
 🔍 **Critical Examination** — Explain arguments, examine counterexamples, and draft proposed revisions.
 
-🧩 **Standalone Use** — No personal model, website, or external workflow is required.
+🧩 **Local Installation** — Clone the repository and load it as an Agent Skill.
 
 ## Getting Started
 
@@ -38,13 +35,10 @@ mkdir -p ~/.agents/skills
 git clone https://github.com/lailai0916/laiism-skill ~/.agents/skills/laiism-skill
 ```
 
-Ask the Agent to use `laiism-skill`. It reads [SKILL.md](SKILL.md), then the relevant records in
-[positions.json](positions.json), including their sources and confirmation states. For example:
+Ask the Agent to use `laiism-skill`. For example:
 "Explain the recorded view on AI and skill value, then propose a counterexample."
 
-If a checkout already exists, link it into the shared directory instead of making another copy.
-Runtime adapters reference the shared root. Run `git pull --ff-only` in the installation directory
-to update. See the [maintenance method](references/method.md) before changing position content or status.
+Run `git pull --ff-only` in the installation directory to update.
 
 ## Project Structure
 
@@ -77,9 +71,8 @@ python3 -m ruff format --check .
 npm run format:check
 ```
 
-Prettier formats supported text files; Ruff formats and checks Python. Local validation checks data,
-identity, links, and evidence fields, not the truth of a position or whether approval occurred.
-Review [behavior scenarios](tests/scenarios.md) when changing interpretation.
+Prettier formats supported text files; Ruff formats and checks Python. The tests cover position data,
+evidence fields, and project identity. See [behavior scenarios](tests/scenarios.md) for discussion examples.
 
 CI also uses a fixed revision of [lailai-template](https://github.com/lailai0916/lailai-template/blob/main/SETUP.md)
 for repository and README checks. Run its checker against this checkout with
