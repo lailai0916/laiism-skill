@@ -7,8 +7,7 @@
     <img src="https://img.shields.io/github/languages/top/lailai0916/laiism-skill?style=flat-square" alt="Top language" />
     <img src="https://img.shields.io/github/repo-size/lailai0916/laiism-skill?style=flat-square" alt="Repository size" />
     <img src="https://img.shields.io/badge/code_style-prettier-ff69b4?style=flat-square" alt="Code style: Prettier" />
-    <img src="https://img.shields.io/github/license/lailai0916/laiism-skill?style=flat-square" alt="Code license: MIT" />
-    <img src="https://img.shields.io/badge/docs-CC_BY_4.0-green?style=flat-square" alt="Documentation license: CC BY 4.0" />
+    <img src="https://img.shields.io/badge/license-MIT-blue?style=flat-square" alt="Code license: MIT" />
   </p>
 </div>
 
@@ -80,6 +79,4 @@ for repository and README checks. Run its checker against this checkout with
 
 ## License
 
-This project's code is licensed under [MIT License](https://github.com/lailai0916/tools/blob/main/LICENSE).
-
-Skill text and position material are licensed under [CC BY 4.0](LICENSE-docs).
+This project's code is licensed under [MIT License](LICENSE), and Skill text and position material are licensed under [CC BY 4.0](LICENSE-docs).

@@ -7,8 +7,7 @@
     <img src="https://img.shields.io/github/languages/top/lailai0916/laiism-skill?style=flat-square" alt="主要语言" />
     <img src="https://img.shields.io/github/repo-size/lailai0916/laiism-skill?style=flat-square" alt="仓库大小" />
     <img src="https://img.shields.io/badge/code_style-prettier-ff69b4?style=flat-square" alt="代码格式：Prettier" />
-    <img src="https://img.shields.io/github/license/lailai0916/laiism-skill?style=flat-square" alt="代码许可：MIT" />
-    <img src="https://img.shields.io/badge/docs-CC_BY_4.0-green?style=flat-square" alt="文档许可：CC BY 4.0" />
+    <img src="https://img.shields.io/badge/license-MIT-blue?style=flat-square" alt="代码许可：MIT" />
   </p>
 </div>
 
@@ -76,6 +75,4 @@ CI 另行引用固定版本的 [lailai-template](https://github.com/lailai0916/l
 
 ## 许可协议
 
-本项目代码采用 [MIT 许可协议](https://github.com/lailai0916/tools/blob/main/LICENSE)。
-
-Skill 文本与思想材料采用 [CC BY 4.0](LICENSE-docs)。
+本项目代码采用 [MIT 许可协议](LICENSE)，Skill 文本与思想材料采用 [CC BY 4.0](LICENSE-docs)。
