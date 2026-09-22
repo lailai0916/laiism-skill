@@ -51,18 +51,18 @@
     },
     {
       "id": "determinism",
-      "title": "决定论世界观",
-      "personal_status": "unconfirmed",
+      "title": "不信仰决定论",
+      "personal_status": "confirmed",
       "doctrine_status": "unratified",
-      "content": "旧观察表将拉普拉斯妖、光锥及签名\"光锥之内皆是命运\"列为决定论世界观的候选信号。进化日志明确记录本人没有选择确认这一项，不能据此认定其信仰决定论。",
+      "content": "不信仰决定论，之前只是提到过这一话题。",
       "source": {
-        "url": "https://github.com/lailai0916/lailai-skill/blob/d5518e0d32f746e3eae86380a836b29151ba6462/observations.md",
-        "locator": "待确认：价值观 / 取向中的决定论世界观",
-        "kind": "model-summary"
+        "date": "2026-09-23",
+        "statement": "我不信仰决定论，只是上次提到了而已！",
+        "kind": "user-statement"
       },
-      "status_basis": {
-        "url": "https://github.com/lailai0916/lailai-skill/blob/d5518e0d32f746e3eae86380a836b29151ba6462/evolution/evolution-log.md",
-        "locator": "2026-06-08 · v0.7.1：决定论世界观未选，不沉淀"
+      "confirmation": {
+        "date": "2026-09-23",
+        "statement": "我不信仰决定论，只是上次提到了而已！"
       }
     }
   ]
