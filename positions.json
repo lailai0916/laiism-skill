@@ -64,6 +64,66 @@
         "date": "2026-09-23",
         "statement": "我不信仰决定论，只是上次提到了而已！"
       }
+    },
+    {
+      "id": "evidence-and-revision",
+      "title": "证据、推理与修正",
+      "personal_status": "unconfirmed",
+      "doctrine_status": "unratified",
+      "content": "看待问题时，应区分可观察事实、解释模型与价值判断；证据支持到哪里，结论就到哪里。论证应说明前提、推理链、适用范围与可能的反例，遇到新证据时允许修正。这个方法追求更可靠的判断，不意味着所有问题都能被完全计算，也不意味着人能获得绝对客观的视角。",
+      "source": {
+        "date": "2026-09-23",
+        "statement": "基于用户提供的多类资料形成的待核对综合提案；未转录私人材料。",
+        "kind": "proposal"
+      }
+    },
+    {
+      "id": "plural-life-values",
+      "title": "人生目标与多元路径",
+      "personal_status": "unconfirmed",
+      "doctrine_status": "unratified",
+      "content": "人生目标不应被单一外部指标穷尽。学习、创造、兴趣、关系、体验与自主选择都可能构成目标；作出选择时，也应同时考虑现实收益、机会成本、风险、责任与生活质量。哪些目标更重要取决于个人处境，这不推出人人都应遵循同一套人生排序。",
+      "source": {
+        "date": "2026-09-23",
+        "statement": "基于用户提供的多类资料形成的待核对综合提案；未转录私人材料。",
+        "kind": "proposal"
+      }
+    },
+    {
+      "id": "agency-and-collective-duty",
+      "title": "个人自主、共同利益与责任",
+      "personal_status": "unconfirmed",
+      "doctrine_status": "unratified",
+      "content": "评价责任与共同利益时，不宜只凭身份、口号或抽象目标下结论，还应考察具体行为、因果贡献、已有承诺、可行替代方案及对他人的影响。个人利益与共同利益可能冲突；应把取舍依据说清楚，而不是把个人偏好包装成普遍定理。个人边界与共同义务如何平衡，仍需要结合具体情境继续论证。",
+      "source": {
+        "date": "2026-09-23",
+        "statement": "基于用户提供的多类资料形成的待核对综合提案；未转录私人材料。",
+        "kind": "proposal"
+      }
+    },
+    {
+      "id": "relational-agency",
+      "title": "关系中的信任与自主",
+      "personal_status": "unconfirmed",
+      "doctrine_status": "unratified",
+      "content": "关系中的表达应尽量诚实，选择应建立在自愿之上，双方的拒绝、边界与退出权都应受到尊重。单方面的投入不会自动产生对方必须回应的义务；信任也需要由实际行为支撑。承诺、依赖或安全风险可能改变具体责任，因此这些原则仍需说明适用条件与例外。",
+      "source": {
+        "date": "2026-09-23",
+        "statement": "基于用户提供的多类资料形成的待核对综合提案；未转录私人材料。",
+        "kind": "proposal"
+      }
+    },
+    {
+      "id": "utility-aesthetics-and-creation",
+      "title": "实用、审美与创造",
+      "personal_status": "unconfirmed",
+      "doctrine_status": "unratified",
+      "content": "成本收益、机会成本与可替代性是重要的决策工具，但不必是衡量价值的唯一尺度。审美、好奇、创造、表达与对细节的投入，也可能构成值得追求的内在价值；作出选择时仍应正视资源代价，并区分个人偏好与普遍义务。不能从一次消费、项目或兴趣选择，直接推出长期不变的信条。",
+      "source": {
+        "date": "2026-09-23",
+        "statement": "基于用户提供的多类资料形成的待核对综合提案；未转录私人材料。",
+        "kind": "proposal"
+      }
     }
   ]
 }
